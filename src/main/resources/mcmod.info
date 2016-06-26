@@ -1,0 +1,16 @@
+[
+{
+  "modid": "tech",
+  "name": "T.E.C.H",
+  "description": "",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["The Acronym Coders"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
