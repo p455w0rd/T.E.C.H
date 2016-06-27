@@ -1,8 +1,8 @@
-package com.acronym.tech.common.util;
+package com.acronym.tech.common.integration.jei;
 
-import net.minecraft.util.math.MathHelper;
+import mezz.jei.api.*;
 
-import java.util.Random;
+import javax.annotation.Nonnull;
 
 /* You are free to:
  * 
@@ -20,14 +20,12 @@ import java.util.Random;
  * You do not have to comply with the license for elements of the material in the public domain or where your use is permitted by an applicable exception or limitation.
  * No warranties are given. The license may not give you all of the permissions necessary for your intended use. For example, other rights such as publicity, privacy, or moral rights may limit how you use the material.
  */
-public class RandomHelper {
-    public static int CalculatePulverizer(float itemValue, float fortuneValue) {
-        Random rng = new Random();
-        if (fortuneValue == 0) {
-            return (int) Math.ceil(itemValue);
-        } else {
-            float random = MathHelper.randomFloatClamp(rng, itemValue, fortuneValue + itemValue);
-            return (int) Math.ceil(random);
-        }
+@JEIPlugin
+public class JeiPlugin extends BlankModPlugin {
+    @Override
+    public void register(@Nonnull IModRegistry registry) {
+        IJeiHelpers jeiHelpers = registry.getJeiHelpers();
+        IGuiHelper guiHelper = jeiHelpers.getGuiHelper();
+
     }
 }
