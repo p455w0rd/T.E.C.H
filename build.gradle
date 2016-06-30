@@ -24,6 +24,10 @@ repositories {
         url 'http://maven.epoxide.xyz'
     }
     maven {
+        name 'CCL'
+        url 'http://chickenbones.net/maven'
+    }
+    maven {
         name = "Amadornes"
         url "http://maven.amadornes.com/"
     }
@@ -38,17 +42,44 @@ repositories {
 }
 
 dependencies {
-    // installable
-
-    // provided apis
     compile "mcp.mobius.waila:Waila:1.7.0-B3_1.9.4"
     compile "net.darkhax.tesla:Tesla:1.9.4-1.1.0.24"
     deobfCompile "mezz.jei:jei_1.10:3.7.0.218"
+    compile "codechicken:CodeChickenLib:1.9.4-2.0.2.39:deobf"
 
     // test
     testCompile 'junit:junit:4.12'
 
 }
+
+def commonManifest = {
+    attributes 'Main-Class': 'com.acronym.tech.TECH'
+    attributes 'FMLCorePlugin': 'codechicken.core.launch.DepLoader'
+    attributes 'FMLAT': 'tech_at.cfg'
+}
+
+jar {
+    classifier = 'universal'
+    manifest commonManifest
+}
+
+task deobfJar(type: Jar) {
+    from sourceSets.main.output
+    classifier = 'deobf'
+    manifest commonManifest
+}
+
+task srcJar(type: Jar) {
+    from sourceSets.main.allSource
+    classifier = 'sources'
+    manifest commonManifest
+}
+
+artifacts {
+    archives deobfJar
+    archives srcJar
+}
+
 /*
 // for people who want stable - not yet functional for MC 1.8.8 - we require the forgegradle 2.1 snapshot
 plugins {
