@@ -39,6 +39,10 @@ repositories {
         name 'JEI'
         url "http://dvs1.progwml6.com/files/maven"
     }
+    maven {
+        name 'JARED'
+        url "http://blamejared.com/maven"
+    }
 }
 
 dependencies {
@@ -46,6 +50,7 @@ dependencies {
     compile "net.darkhax.tesla:Tesla:1.9.4-1.1.0.24"
     deobfCompile "mezz.jei:jei_1.10:3.7.0.218"
     compile "codechicken:CodeChickenLib:1.9.4-2.0.2.39:deobf"
+    compile "com.acronym.base:base:1.10-11-universal:deobf"
 
     // test
     testCompile 'junit:junit:4.12'
@@ -54,8 +59,6 @@ dependencies {
 
 def commonManifest = {
     attributes 'Main-Class': 'com.acronym.tech.TECH'
-    attributes 'FMLCorePlugin': 'codechicken.core.launch.DepLoader'
-    attributes 'FMLAT': 'tech_at.cfg'
 }
 
 jar {
